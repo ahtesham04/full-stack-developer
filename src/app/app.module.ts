@@ -1,16 +1,24 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
+import { QuizComponent } from './quiz/quiz.component';
+import { StoreModule, createReducer } from '@ngrx/store';
+import { CounterComponent } from './counter/counter.component';
+import { counterReducer } from './counter/counter.reducers';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    QuizComponent,
+    CounterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    HttpClientModule,
+    StoreModule.forRoot({ count: counterReducer })
+   
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
